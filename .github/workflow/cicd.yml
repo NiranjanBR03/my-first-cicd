@@ -1,0 +1,28 @@
+name: My First CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Check HTML file
+        run: |
+          echo "Checking project..."
+          test -f index.html
+
+      - name: Build project
+        run: |
+          echo "Building project..."
+          mkdir build
+          cp index.html build/
+
+      - name: Pipeline completed
+        run: echo "CI/CD Pipeline completed successfully!"
